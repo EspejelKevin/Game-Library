@@ -1,2 +1,5 @@
+import secrets
+
+
 class Config(object):
-    pass
+    SECRET_KEY=secrets.token_hex()

@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-6 offset-lg-3 offset-md-2">
+                <h1 class="text-center mt-5 mb-4">Create new user</h1>
+                <div class="card border-0">
+                    <img src="{{ url_for('.static', filename='auth/user.png') }}" class="card-img-top customer" alt="customer">
+                    <div class="card-body mt-3">
+                        
+                        {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                        {% if errors %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {% for e in errors %}
+                            <strong>{{ e }}!</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                        {% endwith %}
+
+
+                        <form method="post" action="{{ url_for('auth.register_customer') }}">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" name="_username" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="Username">
+                                        <label for="floatingInput">Username</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" name="_name" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="Name">
+                                        <label for="floatingInput">Name</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" name="_lastname" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="Last name">
+                                        <label for="floatingInput">Last name</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input required type="email" name="_email" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="Email">
+                                        <label for="floatingInput">Email</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input required type="password" name="_pass" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="Password">
+                                        <label for="floatingInput">Password</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input required type="number" name="_age" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="Age">
+                                        <label for="floatingInput">Age</label>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-success mt-2 rounded-pill" type="submit">Create</button>
+                            </div>
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <a class="btn btn-secondary mt-2 rounded-pill" href="{{ url_for('auth.login_customer') }}">Back</a>
+                            </div>        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .customer {
+            display: block;
+            height: 6rem;
+            margin: 0px auto;
+            width: 6rem;
+        }
+    </style>
+{% endblock %}

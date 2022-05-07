@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-xs-6 col-sm-8 col-md-6 mx-auto">
+                <h1 class="text-center mt-5 mb-4">Welcome! Log In</h1>
+                <div class="card border-0">
+                    <img src="{{ url_for('.static', filename='auth/gamer.png') }}" class="card-img-top customer" alt="employee">
+                    <div class="card-body mt-3">
+
+                        
+
+                            {% with errors = get_flashed_messages(category_filter=["error"]) %}
+                            {% if errors %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                {% for e in errors %}
+                                <strong>{{ e }}!</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {% endwith %}
+                            
+                            
+                            {% with messages = get_flashed_messages(category_filter=["success"]) %}
+                            {% if messages %}
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                {% for msg in messages %}
+                                <strong>{{ msg }}!</strong>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                {% endfor %}
+                            </div>
+                            {% endif %}
+                            {% endwith %}
+                            
+                      
+                        <form method="post" action="{{ url_for('auth.login_customer') }}">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input required type="text" name="username" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="Username">
+                                        <label for="floatingInput">Username</label>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="row">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <input required type="password" name="pass" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="Password">
+                                        <label for="floatingInput">Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <span>New customer? <a href="{{ url_for('auth.register_customer') }}" class="link-register"><strong>Register here!</strong></a></span>
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid gap-2 col-7 mx-auto">
+                                <button class="btn btn-success mt-4 rounded-pill" type="submit">Log In</button>
+                            </div>        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .customer {
+            display: block;
+            height: 6rem;
+            margin: 0px auto;
+            width: 6rem;
+        }
+        .link-register{
+            text-decoration: none;
+            color: black;
+        }
+        .link-register:hover{
+            color: gray;
+        }
+    </style>
+{% endblock %}

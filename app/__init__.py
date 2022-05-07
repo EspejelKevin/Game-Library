@@ -1,4 +1,3 @@
-import aifc
 from flask import Flask
 from config import Config
 from .start import start
@@ -13,3 +12,4 @@ def create_app():
     app.register_blueprint(auth)
     
     return app
+    

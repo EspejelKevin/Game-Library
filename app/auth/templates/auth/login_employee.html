@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-center mt-5 mb-4">Welcome! Log In</h1>
+                <div class="card border-0">
+                    <img src="{{ url_for('.static', filename='auth/loginemployee.png') }}" class="card-img-top employee" alt="employee">
+                    <div class="card-body mt-3">
+                        <form method="post" action="{{ url_for('auth.login_employee') }}">
+                            <div class="row">
+                                <div class="col-lg-4 col-xs-6 col-sm-8 col-md-6 mx-auto">
+                                    <div class="form-floating mb-3">
+                                        <input type="number" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="No. Employee">
+                                        <label for="floatingInput">No. Employee</label>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="row">
+                                <div class="col-lg-4 col-xs-6 col-sm-8 col-md-6 mx-auto">
+                                    <div class="form-floating mb-3">
+                                        <input type="password" class="form-control rounded-pill border border-secondary" id="floatingInput" placeholder="Password">
+                                        <label for="floatingInput">Password</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-lg-4 col-xs-6 col-sm-8 col-md-6 mx-auto">
+                                    <span>New employee? <a href="{{ url_for('auth.register_employee') }}" class="link-register"><strong>Register here!</strong></a></span>
+                                </div>
+                            </div>
+                            
+                            <div class="d-grid gap-2 col-lg-2 col-md-3 col-sm-4 col-xs-2 mx-auto">
+                                <button class="btn btn-success mt-4 rounded-pill" type="submit">Create</button>
+                            </div>        
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .employee {
+            display: block;
+            height: 6rem;
+            margin: 0px auto;
+            width: 6rem;
+        }
+        .link-register{
+            text-decoration: none;
+            color: black;
+        }
+        .link-register:hover{
+            color: gray;
+        }
+    </style>
+{% endblock %}

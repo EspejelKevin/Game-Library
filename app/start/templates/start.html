@@ -15,15 +15,14 @@
                         <p class="card-text">
                             <form action="{{ url_for('start.whois') }}" method="post" class="mt-3">
                                 <select class="form-select rounded-pill" aria-label="Default select example" name="user" id="user">
-                                    <option selected>Who are you?</option>
+                                    <option selected><strong>Who are you?</strong></option>
                                     <option value="employee">Employee</option>
                                     <option value="customer">Customer</option>
                                     
-                                  </select>
-                                  <div class="d-grid gap-2 col-6 mx-auto">
+                                </select>
+                                <div class="d-grid gap-2 col-6 mx-auto">
                                     <button class="btn btn-primary mt-4 rounded-pill" type="submit">Confirm</button>
-                                    
-                                  </div>
+                                </div>
                             </form>
                         </p>
                     </div>
